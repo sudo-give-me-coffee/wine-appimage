@@ -5,7 +5,7 @@
 export ARCH="x86_64"
 export Version="4.0.3"
 export BuildDependencies="aptitude wget file gzip curl"
-export WorkingDir="Wine.AppDir"
+export WorkingDir="Winetricks.AppDir"
 export PackagesDirectory='/tmp/.cache'
 export wgetOptions="-nv -c --show-progress --progress=bar:force:noscroll"
 export DownloadURLs=(
@@ -38,15 +38,11 @@ chmod +x "wine-preloader_hook"
 
 # Get WINE deps
 
-aptitude -y -d -o dir::cache::archives="${PackagesDirectory}" install libwine:i386
-
-# Extract WINE
-
-tar -xzf "PlayOnLinux-wine-${Version}-upstream-linux-x86.tar.gz" -C "${WorkingDir}"
+aptitude -y -d -o dir::cache::archives="${PackagesDirectory}" install winetricks
 
 # Copy wine dependencies to AppDir
 
-find "${PackagesDirectory}" -name '*deb' ! -name 'libwine*' -exec dpkg -x {} "./${WorkingDir}" \;
+find "${PackagesDirectory}" -name '*deb' -exec dpkg -x {} "./${WorkingDir}" \;
 
 # Copy data to AppDir
 
@@ -58,6 +54,6 @@ mv "wine-preloader_hook" "${WorkingDir}/bin"
 
 ./appimagetool-x86_64.AppImage --appimage-extract
 ./squashfs-root/AppRun "${WorkingDir}"
-mv "Wine-x86_64.AppImage" "Wine-${Version}-x86_64.AppImage"
+mv "Winetricks-x86_64.AppImage" "Winetricks-${Version}-x86_64.AppImage"
 
 exit
