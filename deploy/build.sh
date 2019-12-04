@@ -54,6 +54,6 @@ mv "wine-preloader_hook" "${WorkingDir}/bin"
 
 ./appimagetool-x86_64.AppImage --appimage-extract
 ./squashfs-root/AppRun "${WorkingDir}"
-mv "Wine.AppImage" "Wine-tricks-x86_64.AppImage"
+mv "Wine-x86_64.AppImage" "Wine-tricks-x86_64.AppImage"
 
 exit
