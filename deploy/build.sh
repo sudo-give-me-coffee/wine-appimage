@@ -3,7 +3,7 @@
 # Setup environment
 
 export ARCH="x86_64"
-export Version="4.21"
+export Version="1.6"
 export BuildDependencies="aptitude wget file gzip curl cabextract"
 export WorkingDir="Wine.AppDir"
 export PackagesDirectory='/tmp/.cache'
